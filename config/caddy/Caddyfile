@@ -1,0 +1,4 @@
+example.com {
+	root * /usr/share/caddy
+	file_server
+}
