@@ -1,0 +1,10 @@
+plugins.security.disabled: true
+# plugins.security.allow_default_init_securityindex: true
+# plugins.security.advanced_modules_enabled: true
+# plugins.security.roles_mapping_resolution: MAPPING_ONLY
+
+# plugins.security.ssl_only: false
+# plugins.security.ssl.http.enabled: false
+# plugins.security.ssl.http.enable_openssl_if_available: false
+# plugins.security.ssl.transport.enabled: false
+# plugins.security.ssl.transport.enable_openssl_if_available: false
