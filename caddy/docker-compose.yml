@@ -1,13 +1,5 @@
 version: "3.8"
 services:
-  ddclient:
-    image: linuxserver/ddclient:version-v3.9.1
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Singapore
-    volumes:
-      - ./config/ddclient:/config
   caddy:
     image: caddy:2
     environment:
