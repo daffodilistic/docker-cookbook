@@ -1,0 +1,15 @@
+version: '2.4'
+services:
+  django:
+    image: python:3.10
+    # user: "0:1001"
+    entrypoint: ["/bin/sh","-c"]
+    command:
+      - |
+        cd /var/www/django &&
+        pip install --no-cache-dir -r requirements.txt &&
+        python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./volumes/django/src:/var/www/django"
