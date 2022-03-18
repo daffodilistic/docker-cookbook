@@ -1,4 +1,25 @@
-example.com {
-	root * /usr/share/caddy
+staging.example.com {
+	@django {
+		header X-Custom-App-Version 2
+	}
+
+	handle @django {
+		reverse_proxy django:8000 {
+		}
+	}
+
+	handle {
+		reverse_proxy nginx:80 {
+			# header_up Host {host} # redundant
+			header_up X-Real-IP {remote}
+			# header_up X-Forwarded-For {remote}  # redundant
+			# header_up X-Forwarded-Port {server_port} # redundant
+		}
+	}
+}
+
+cms.example.com {
+	root * /app/laravel/public
+	php_fastcgi php_fpm:9000
 	file_server
 }
