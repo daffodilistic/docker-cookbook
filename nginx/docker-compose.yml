@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:1
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./volumes/nginx/nginx.conf:/etc/nginx/conf.d/forward-proxy.conf
