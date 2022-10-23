@@ -23,3 +23,10 @@ cms.example.com {
 	php_fastcgi php_fpm:9000
 	file_server
 }
+
+spa.example.com {
+	encode zstd gzip
+	root * /var/www/leadership
+	try_files {path} /index.html
+	file_server
+}
