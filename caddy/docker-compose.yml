@@ -8,7 +8,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./config/caddy:/config
-      - ./config/caddy/Caddyfile:/etc/caddy/Caddyfile
-      - ./data/caddy:/data
+      - ./volumes/caddy/config:/config
+      - ./volumes/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./volumes/caddy/data:/data
       - ./app/public_html:/usr/share/caddy
