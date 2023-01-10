@@ -30,3 +30,14 @@ spa.example.com {
 	try_files {path} /index.html
 	file_server
 }
+
+ondemand_tls.example.com {
+	tls internal {
+		on_demand
+		get_certificate http http://tls_provider/certs
+	}
+	handle {
+		root * /usr/share/caddy
+		file_server
+	}
+}
