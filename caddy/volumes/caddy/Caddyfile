@@ -14,7 +14,15 @@ staging.example.com {
 			header_up X-Real-IP {remote}
 			# header_up X-Forwarded-For {remote}  # redundant
 			# header_up X-Forwarded-Port {server_port} # redundant
+			header_down -Server
+			header_down -X-Powered-By
+			header_down -X-Asp*
 		}
+		header X-Powered-By "Coffee"
+	}
+
+	log {
+		output file /var/log/caddy/staging.example.com-access.log
 	}
 }
 
