@@ -26,7 +26,21 @@ staging.example.com {
 	}
 }
 
-cms.example.com {
+load_balance.example.com {
+	handle {
+		reverse_proxy 10.99.2.200:80 10.99.2.210:80 {
+			lb_policy least_conn
+			lb_retries 1
+			lb_try_duration 5s
+			health_uri /
+			health_interval 10s
+			health_timeout 10s
+		}
+		header X-Powered-By "Coffee"
+	}
+}
+
+php.example.com {
 	root * /app/laravel/public
 	php_fastcgi php_fpm:9000
 	file_server
