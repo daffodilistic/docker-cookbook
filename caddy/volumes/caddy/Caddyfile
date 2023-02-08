@@ -57,6 +57,23 @@ spa.example.com {
 	file_server
 }
 
+hasura.example.com {
+	handle /api/graphql* {
+		rewrite /api/graphql /v1/graphql
+		reverse_proxy host.docker.internal:9090 {
+			header_down -Server
+		}
+	}
+
+	redir /admin/hasura /admin/hasura/
+	handle /admin/hasura/* {
+		uri strip_prefix /admin/hasura
+		reverse_proxy host.docker.internal:9090 {
+			header_down -Server
+		}
+	}
+}
+
 ondemand_tls.example.com {
 	tls internal {
 		on_demand
