@@ -4,6 +4,10 @@ staging.example.com {
 	}
 
 	handle @django {
+		basicauth {
+			Alice <PASSWORD_HASH>
+			Bob <PASSWORD_HASH>
+		}
 		reverse_proxy django:8000 {
 		}
 	}
