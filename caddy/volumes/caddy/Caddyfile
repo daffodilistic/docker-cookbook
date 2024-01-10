@@ -2,6 +2,12 @@ staging.example.com {
 	@django {
 		header X-Custom-App-Version 2
 	}
+ 	@blocked not remote_ip 192.168.1.1/24
+
+        handle @blocked {
+                header Content-Type text/html
+                respond "<h1>Forbidden by Marcus Soh</h1>" 403
+        }
 
 	handle @django {
 		basicauth {
